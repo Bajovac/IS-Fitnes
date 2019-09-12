@@ -1,0 +1,71 @@
+﻿<Window x:Class="Projekat.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat"
+        mc:Ignorable="d"
+        Title="Dallas" Height="580" Width="930" WindowStartupLocation="CenterScreen" MinHeight="500" MinWidth="900" FontSize="16" Foreground="White" WindowStyle="ThreeDBorderWindow">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFFDFDFD" Offset="0"/>
+            <GradientStop Color="#FFECE9DC" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="61"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="AddOsobljeGrid" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="3">
+            <local:AddOsoblje x:Name="AddOsoblje" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Visibility="Collapsed" x:FieldModifier="public"/>
+        </Grid>
+        <Grid x:Name="AddSankGrid" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="3">
+            <local:AddSank x:Name="AddSank" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Visibility="Collapsed" x:FieldModifier="public"/>
+        </Grid>
+        <Grid x:Name="AddRecepcijaGrid" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="3">
+            <local:AddRecepcija x:Name="AddRecepcija" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Visibility="Collapsed" x:FieldModifier="public"/>
+        </Grid>
+        <Grid x:Name="AddKuhinjaGrid" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="3">
+            <local:AddKuhinja x:Name="AddKuhinja" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Visibility="Collapsed" x:FieldModifier="public"/>
+        </Grid>
+
+        <Grid x:Name="OsobljeGrid" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="3">
+            <local:Osoblje x:Name="osoblje" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Visibility="Collapsed" x:FieldModifier="public"/>
+        </Grid>
+        <Grid x:Name="KuhinjaGrid" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="3">
+            <local:Kuhinja x:Name="kuhinja" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Visibility="Collapsed" x:FieldModifier="public"/>
+        </Grid>
+        <Grid x:Name="RecepcijaGrid" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="3">
+            <local:Recepcija x:Name="recepcija" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Visibility="Collapsed" x:FieldModifier="public"/>
+        </Grid>
+        <Grid x:Name="SankGrid" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="3">
+            <local:Sank x:Name="sank" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Visibility="Collapsed" x:FieldModifier="public"/>
+        </Grid>
+
+        <Menu Height="61" HorizontalAlignment="Stretch" Background="#FFF7E9CB" >
+            <MenuItem Header="Knjigovodstvo" Height="61" Width="138" FontSize="16">
+                <MenuItem Header="U izradi..." HorizontalAlignment="Left" Height="100" Width="158" Click="uIzradiKlik"/>
+            </MenuItem>
+            <MenuItem Header="Komercijala" Height="61" Width="120" FontSize="16">
+                <MenuItem Header="U izradi..." HorizontalAlignment="Left" Height="100" Width="158" Click="uIzradiKlik"/>
+            </MenuItem>
+            <MenuItem Header="Uprava" Height="61" Width="94" FontSize="16">
+                <MenuItem Header="Osoblje" HorizontalAlignment="Left" Height="100" Width="158" Click="osobljeKlik"/>
+                <MenuItem Header="Šank" HorizontalAlignment="Left" Height="100" Width="158" Click="sankKlik"/>
+                <MenuItem Header="Kuhinja" HorizontalAlignment="Left" Height="100" Width="158" Click="kuhinjaKlik"/>
+                <MenuItem Header="Recepcija" HorizontalAlignment="Left" Height="100" Width="158" Click="recepcijaKlik"/>
+            </MenuItem>
+            <MenuItem Header="Proizvodnja" Height="61" Width="120" FontSize="16" >
+                <MenuItem Header="U izradi..." HorizontalAlignment="Left" Height="100" Width="158" Click="uIzradiKlik"/>
+            </MenuItem>
+            <MenuItem Header="Pomoć" Height="61" Width="95" FontSize="16">
+                <MenuItem Header="Pomoć" HorizontalAlignment="Left" Height="100" Width="158"/>
+                <MenuItem Header="O softveru" HorizontalAlignment="Left" Height="100" Width="158" Click="oSoftveru"/>
+            </MenuItem>
+        </Menu>
+    </Grid>
+</Window>

@@ -1,0 +1,26 @@
+﻿<Window x:Class="Projekat.LogIn"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat"
+        mc:Ignorable="d"
+        Title="LogIn" Height="216" Width="384" BorderThickness="1" WindowStyle="None" WindowStartupLocation="CenterScreen" UseLayoutRounding="False" ResizeMode="NoResize" KeyDown="Window_KeyDown" BorderBrush="#FFF90000"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="UsernameBox" HorizontalAlignment="Left" Height="30" ToolTip="Unesite vaše korisničko ime" Margin="177,23,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="169" Grid.ColumnSpan="2" FontSize="16"/>
+        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" ToolTip="Unesite vašu korisničku šifru" Height="30" Margin="177,85,0,0"  VerticalAlignment="Top" Width="169" Grid.ColumnSpan="2" Grid.RowSpan="2" FontSize="16"/>
+        <Label Content="Korisničko ime:" HorizontalAlignment="Left" Margin="27,23,0,0" VerticalAlignment="Top" Height="30" Width="117" FontSize="16"/>
+        <Label Content="Šifra:" HorizontalAlignment="Left" Margin="99,85,0,0" VerticalAlignment="Top" FontSize="16" Height="30" RenderTransformOrigin="0.5,0.5" Width="45" Grid.RowSpan="2"/>
+        <Button Content="Izlaz" BorderThickness="0" ToolTip="Zatvori program" HorizontalAlignment="Left" Margin="81,43,0,0" Grid.Row="1" VerticalAlignment="Top" Width="73" Height="41" FontSize="16" Grid.Column="1" Click="Exit_Click" Background="#FFC2E1FF"/>
+        <Button Content="Prijava" BorderThickness="0" ToolTip="Prijava na sistem" HorizontalAlignment="Left" Margin="177,43,0,0" Grid.Row="1" VerticalAlignment="Top" Width="73" Height="41" FontSize="16" Grid.ColumnSpan="2" Click="LogIn_Click" Background="#FFC2E1FF"/>
+    </Grid>
+</Window>

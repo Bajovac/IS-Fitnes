@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="Projekat.Recepcija"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Projekat"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="870">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.17*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.17*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="buttonAdd"   BorderThickness="0" Grid.Row="5" ToolTip="Dodaj novog radnika" Height="Auto" Margin="0,10,145,10" Grid.Column="1" 
+                Click="buttonAdd_Click" Background="#FFC2E1FF">
+            Dodaj
+        </Button>
+
+        <DataGrid x:Name="DataGridPeople" 
+                  ItemsSource="{Binding Path=lista}" IsReadOnly="True" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True"
+                  ColumnWidth="*" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="5" Margin="0,22,0,0" 
+                  >
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn Header="ID" Width="40">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Id}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Tip pansiona" Width="*" Binding="{Binding Ime}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Broj sobe" Width="*" Binding="{Binding Prezime}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Cena" Width="*" Binding="{Binding Jmbg}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Komentar" Width="*" Binding="{Binding Brk}"></DataGridTextColumn>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="buttonUpdate"   BorderThickness="0" Grid.Row="5" ToolTip="Izmeni postojećeg radnika" Height="Auto" Margin="73,10" Grid.Column="2" 
+            Click="buttonUpdate_Click" Content="Izmeni" Background="#FFC2E1FF"/>
+        <Button x:Name="buttonDelete"   BorderThickness="0" Grid.Row="5" ToolTip="Obriši postojećeg radnika" Height="Auto" Margin="145,10,0,10" Grid.Column="3" 
+            Click="buttonDelete_Click" Content="Obriši" Background="#FFC2E1FF"/>
+    </Grid>
+</UserControl>
