@@ -109,68 +109,68 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddKuhinja.xaml.cs">
-      <DependentUpon>AddKuhinja.xaml</DependentUpon>
+    <Compile Include="AddSup.xaml.cs">
+      <DependentUpon>AddSup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddRecepcija.xaml.cs">
-      <DependentUpon>AddRecepcija.xaml</DependentUpon>
+    <Compile Include="AddZap.xaml.cs">
+      <DependentUpon>AddZap.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddSank.xaml.cs">
-      <DependentUpon>AddSank.xaml</DependentUpon>
+    <Compile Include="AddPriz.xaml.cs">
+      <DependentUpon>AddPriz.xaml</DependentUpon>
     </Compile>
-    <Compile Include="KuhinjaData.cs" />
-    <Compile Include="Recepcija.xaml.cs">
-      <DependentUpon>Recepcija.xaml</DependentUpon>
+    <Compile Include="SupData.cs" />
+    <Compile Include="Zap.xaml.cs">
+      <DependentUpon>Zap.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RecepcijaData.cs" />
-    <Compile Include="Sank.xaml.cs">
-      <DependentUpon>Sank.xaml</DependentUpon>
+    <Compile Include="ZapData.cs" />
+    <Compile Include="Priz.xaml.cs">
+      <DependentUpon>Priz.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SankData.cs" />
-    <Compile Include="UpdateKuhinjaModal.xaml.cs">
-      <DependentUpon>UpdateKuhinjaModal.xaml</DependentUpon>
+    <Compile Include="PrizData.cs" />
+    <Compile Include="UpdateSupModal.xaml.cs">
+      <DependentUpon>UpdateSupModal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UpdateOsoblje.xaml.cs">
-      <DependentUpon>UpdateOsoblje.xaml</DependentUpon>
+    <Compile Include="UpdateClan.xaml.cs">
+      <DependentUpon>UpdateClan.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UpdateOsobljeModal.xaml.cs">
-      <DependentUpon>UpdateOsobljeModal.xaml</DependentUpon>
+    <Compile Include="UpdateClanModal.xaml.cs">
+      <DependentUpon>UpdateClanModal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UpdateRecepcijaModal.xaml.cs">
-      <DependentUpon>UpdateRecepcijaModal.xaml</DependentUpon>
+    <Compile Include="UpdateZapModal.xaml.cs">
+      <DependentUpon>UpdateZapModal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UpdateSankModal.xaml.cs">
-      <DependentUpon>UpdateSankModal.xaml</DependentUpon>
+    <Compile Include="UpdatePrizModal.xaml.cs">
+      <DependentUpon>UpdatePrizModal.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddKuhinja.xaml">
+    <Page Include="AddSup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddOsoblje.xaml">
+    <Page Include="AddClan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddRecepcija.xaml">
+    <Page Include="AddZap.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddSank.xaml">
+    <Page Include="AddPriz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Kuhinja.xaml">
+    <Page Include="Sup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="AddOsoblje.xaml.cs">
-      <DependentUpon>AddOsoblje.xaml</DependentUpon>
+    <Compile Include="AddClan.xaml.cs">
+      <DependentUpon>AddClan.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Kuhinja.xaml.cs">
-      <DependentUpon>Kuhinja.xaml</DependentUpon>
+    <Compile Include="Sup.xaml.cs">
+      <DependentUpon>Sup.xaml</DependentUpon>
     </Compile>
     <Page Include="LogIn.xaml">
       <SubType>Designer</SubType>
@@ -180,35 +180,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Osoblje.xaml">
+    <Page Include="Clan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Recepcija.xaml">
+    <Page Include="Zap.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Sank.xaml">
+    <Page Include="Priz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UpdateKuhinjaModal.xaml">
+    <Page Include="UpdateSupModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UpdateOsoblje.xaml">
+    <Page Include="UpdateClan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UpdateOsobljeModal.xaml">
+    <Page Include="UpdateClanModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UpdateRecepcijaModal.xaml">
+    <Page Include="UpdateZapModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UpdateSankModal.xaml">
+    <Page Include="UpdatePrizModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -220,10 +220,10 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Osoblje.xaml.cs">
-      <DependentUpon>Osoblje.xaml</DependentUpon>
+    <Compile Include="Clan.xaml.cs">
+      <DependentUpon>Clan.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OsobljeData.cs" />
+    <Compile Include="ClanData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

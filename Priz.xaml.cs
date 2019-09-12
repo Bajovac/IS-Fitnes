@@ -19,13 +19,13 @@ using System.Windows.Shapes;
 namespace Projekat
 {
     /// <summary>
-    /// Interaction logic for Osoblje.xaml
+    /// Interaction logic for Clan.xaml
     /// </summary>
-    public partial class Osoblje : UserControl
+    public partial class Priz : UserControl
     {
-        List<OsobljeData> lista = new List<OsobljeData>();
+        List<PrizData> lista = new List<PrizData>();
 
-        public Osoblje()
+        public Priz()
         {
             InitializeComponent();
 
@@ -36,7 +36,7 @@ namespace Projekat
         }
 
         // SERIJALIZACIJA/DESERIJALIZACIJA IZ DATOTEKE
-        private readonly string _osoblje = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "osoblje.bin");
+        private readonly string _osoblje = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sank.bin");
 
 
         public void UcitajDatotekuResursa()
@@ -49,7 +49,7 @@ namespace Projekat
 
                 stream = File.Open(_osoblje, FileMode.OpenOrCreate);
                 lista = null;
-                lista = (List<OsobljeData>)formatter.Deserialize(stream);
+                lista = (List<PrizData>)formatter.Deserialize(stream);
 
                 this.DataGridPeople.ItemsSource = lista;
 
@@ -95,11 +95,11 @@ namespace Projekat
 
         private void buttonAdd_Click(object sender, RoutedEventArgs e)
         {
-            
+
             MainWindow pocetniProzor = Window.GetWindow(this) as MainWindow;
             if (pocetniProzor != null)
             {
-                pocetniProzor.AddOsoblje.Visibility = Visibility.Visible;
+                pocetniProzor.AddSank.Visibility = Visibility.Visible;
                 this.Visibility = Visibility.Collapsed;
                 UcitajDatotekuResursa();
             }
@@ -113,7 +113,7 @@ namespace Projekat
         {
 
 
-            UpdateOsobljeModal update29Modal = new UpdateOsobljeModal(
+            UpdatePrizModal update29Modal = new UpdatePrizModal(
                lista[DataGridPeople.SelectedIndex].Id,
                 lista[DataGridPeople.SelectedIndex].Ime,
                 lista[DataGridPeople.SelectedIndex].Prezime,
@@ -128,7 +128,7 @@ namespace Projekat
 
             UcitajDatotekuResursa();
 
-            
+
 
         }
 

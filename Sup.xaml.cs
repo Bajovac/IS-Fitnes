@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,50 +13,46 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Projekat
 {
     /// <summary>
-    /// Interaction logic for Add26.xaml
+    /// Interaction logic for Clan.xaml
     /// </summary>
-    public partial class AddOsoblje : UserControl
+    public partial class Sup : UserControl
     {
-        List<OsobljeData> lista = new List<OsobljeData>();
+        List<SupData> lista = new List<SupData>();
 
-        public AddOsoblje()
+        public Sup()
         {
             InitializeComponent();
 
+
+
             UcitajDatotekuResursa();
+
         }
 
         // SERIJALIZACIJA/DESERIJALIZACIJA IZ DATOTEKE
-        private readonly string _osoblje = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "osoblje.bin");
+        private readonly string _osoblje = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "kuhinja.bin");
 
 
-        private void UcitajDatotekuResursa()
+        public void UcitajDatotekuResursa()
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = null;
 
-            // TREBA IF ELSE, PROVERI DA LI RADI BEZ LISTA != NULL
-
-
-
-
             try
             {
-                // obsCol ima ugradjen konstuktor samo ubacim listu u njega
+
                 stream = File.Open(_osoblje, FileMode.OpenOrCreate);
-                lista = (List<OsobljeData>)formatter.Deserialize(stream);
+                lista = null;
+                lista = (List<SupData>)formatter.Deserialize(stream);
 
-                Console.WriteLine(lista);
+                this.DataGridPeople.ItemsSource = lista;
 
-                foreach (OsobljeData item in lista)
-                {
-                    Console.WriteLine(item.Ime);
-                }
 
             }
             catch
@@ -78,22 +74,6 @@ namespace Projekat
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = null;
 
-            //Random number = new Random();
-
-            OsobljeData data29 = new OsobljeData();
-            data29.Id = boxID.Text;
-            data29.Ime = boxIME.Text;
-            data29.Prezime = boxPREZIME.Text;
-            data29.Jmbg = boxJMBG.Text;
-            data29.Brk = boxBRK.Text;
-
-            lista.Add(data29);
-
-            foreach (OsobljeData person in lista)
-            {
-                Console.WriteLine(person.Id);
-            }
-
             try
             {
 
@@ -113,34 +93,55 @@ namespace Projekat
             }
         }
 
-        private void buttonOK_Click(object sender, RoutedEventArgs e)
+        private void buttonAdd_Click(object sender, RoutedEventArgs e)
         {
-            MemorisiDatotekuResursa();
-            UcitajDatotekuResursa();
+
             MainWindow pocetniProzor = Window.GetWindow(this) as MainWindow;
             if (pocetniProzor != null)
             {
-                UcitajDatotekuResursa();
-                pocetniProzor.osoblje.Visibility = Visibility.Visible;
+                pocetniProzor.AddKuhinja.Visibility = Visibility.Visible;
                 this.Visibility = Visibility.Collapsed;
-
-
+                UcitajDatotekuResursa();
             }
+
+
+            UcitajDatotekuResursa();
+
         }
 
-        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        private void buttonUpdate_Click(object sender, RoutedEventArgs e)
         {
-            UcitajDatotekuResursa();
-            this.Visibility = Visibility.Collapsed;
-            UcitajDatotekuResursa();
-            MainWindow pocetniProzor = Window.GetWindow(this) as MainWindow;
-            if (pocetniProzor != null)
-            {
-                UcitajDatotekuResursa();
-                pocetniProzor.osoblje.Visibility = Visibility.Visible;
-                this.Visibility = Visibility.Collapsed;
 
-            }
+
+            UpdateSupModal update29Modal = new UpdateSupModal(
+               lista[DataGridPeople.SelectedIndex].Id,
+                lista[DataGridPeople.SelectedIndex].Ime,
+                lista[DataGridPeople.SelectedIndex].Prezime,
+                lista[DataGridPeople.SelectedIndex].Jmbg,
+                lista[DataGridPeople.SelectedIndex].Brk);
+
+
+
+            UcitajDatotekuResursa();
+            update29Modal.Show();
+
+
+            UcitajDatotekuResursa();
+
+
+
+        }
+
+        private void buttonDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+            lista.RemoveAt(DataGridPeople.SelectedIndex);
+
+            MemorisiDatotekuResursa();
+
+            UcitajDatotekuResursa();
+
+
         }
     }
 }

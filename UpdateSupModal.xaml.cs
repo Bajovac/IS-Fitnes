@@ -17,11 +17,10 @@ using System.Windows.Shapes;
 namespace Projekat
 {
     /// <summary>
-    /// Interaction logic for UpdateSankModal.xaml
+    /// Interaction logic for Update29.xaml
     /// </summary>
-    public partial class UpdateSankModal : Window
+    public partial class UpdateSupModal : Window
     {
-        
 
 
         private string id;
@@ -30,15 +29,15 @@ namespace Projekat
         string jmbg;
         string brk;
 
-        public UpdateSankModal()
+        public UpdateSupModal()
         {
             InitializeComponent();
         }
 
-        List<SankData> lista = new List<SankData>();
+        List<SupData> lista = new List<SupData>();
 
 
-        public UpdateSankModal(string id, string ime, string prezime, string jmbg, string brk)
+        public UpdateSupModal(string id, string ime, string prezime, string jmbg, string brk)
         {
 
             InitializeComponent();
@@ -60,7 +59,7 @@ namespace Projekat
 
 
         // SERIJALIZACIJA/DESERIJALIZACIJA IZ DATOTEKE
-        private readonly string _osoblje = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sank.bin");
+        private readonly string _osoblje = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "kuhinja.bin");
 
 
         private void UcitajDatotekuResursa()
@@ -77,11 +76,11 @@ namespace Projekat
             {
                 // obsCol ima ugradjen konstuktor samo ubacim listu u njega
                 stream = File.Open(_osoblje, FileMode.OpenOrCreate);
-                lista = (List<SankData>)formatter.Deserialize(stream);
+                lista = (List<SupData>)formatter.Deserialize(stream);
 
                 Console.WriteLine(lista);
 
-                foreach (SankData item in lista)
+                foreach (SupData item in lista)
                 {
                     Console.WriteLine(item.Id);
                 }
@@ -108,7 +107,7 @@ namespace Projekat
 
 
 
-            foreach (SankData data29 in lista)
+            foreach (SupData data29 in lista)
             {
                 if (data29.Id == this.id)
                 {
@@ -148,7 +147,7 @@ namespace Projekat
             if (pocetniProzor != null)
             {
                 UcitajDatotekuResursa();
-                pocetniProzor.sank.Visibility = Visibility.Visible;
+                pocetniProzor.kuhinja.Visibility = Visibility.Visible;
                 this.Visibility = Visibility.Collapsed;
                 UcitajDatotekuResursa();
             }
@@ -163,7 +162,7 @@ namespace Projekat
             if (pocetniProzor != null)
             {
                 UcitajDatotekuResursa();
-                pocetniProzor.sank.Visibility = Visibility.Visible;
+                pocetniProzor.kuhinja.Visibility = Visibility.Visible;
                 this.Visibility = Visibility.Collapsed;
                 UcitajDatotekuResursa();
             }
@@ -179,5 +178,4 @@ namespace Projekat
         //    e.Handled = Regex.IsMatch(e.Text, "[^0-9.a-Z- ]+");
         //}
     }
-
 }

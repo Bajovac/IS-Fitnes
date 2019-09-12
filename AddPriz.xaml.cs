@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,46 +13,50 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Projekat
 {
     /// <summary>
-    /// Interaction logic for Osoblje.xaml
+    /// Interaction logic for Add26.xaml
     /// </summary>
-    public partial class Sank : UserControl
+    public partial class AddPriz : UserControl
     {
-        List<SankData> lista = new List<SankData>();
+        List<PrizData> lista = new List<PrizData>();
 
-        public Sank()
+        public AddPriz()
         {
             InitializeComponent();
 
-
-
             UcitajDatotekuResursa();
-
         }
 
         // SERIJALIZACIJA/DESERIJALIZACIJA IZ DATOTEKE
         private readonly string _osoblje = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sank.bin");
 
 
-        public void UcitajDatotekuResursa()
+        private void UcitajDatotekuResursa()
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = null;
 
+            // TREBA IF ELSE, PROVERI DA LI RADI BEZ LISTA != NULL
+
+
+
+
             try
             {
-
+                // obsCol ima ugradjen konstuktor samo ubacim listu u njega
                 stream = File.Open(_osoblje, FileMode.OpenOrCreate);
-                lista = null;
-                lista = (List<SankData>)formatter.Deserialize(stream);
+                lista = (List<PrizData>)formatter.Deserialize(stream);
 
-                this.DataGridPeople.ItemsSource = lista;
+                Console.WriteLine(lista);
 
+                foreach (PrizData item in lista)
+                {
+                    Console.WriteLine(item.Ime);
+                }
 
             }
             catch
@@ -74,6 +78,22 @@ namespace Projekat
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = null;
 
+            //Random number = new Random();
+
+            PrizData data29 = new PrizData();
+            data29.Id = boxID.Text;
+            data29.Ime = boxIME.Text;
+            data29.Prezime = boxPREZIME.Text;
+           // data29.Jmbg = boxJMBG.Text;
+           // data29.Brk = boxBRK.Text;
+
+            lista.Add(data29);
+
+            foreach (PrizData person in lista)
+            {
+                Console.WriteLine(person.Id);
+            }
+
             try
             {
 
@@ -93,55 +113,34 @@ namespace Projekat
             }
         }
 
-        private void buttonAdd_Click(object sender, RoutedEventArgs e)
+        private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
-
+            MemorisiDatotekuResursa();
+            UcitajDatotekuResursa();
             MainWindow pocetniProzor = Window.GetWindow(this) as MainWindow;
             if (pocetniProzor != null)
             {
-                pocetniProzor.AddSank.Visibility = Visibility.Visible;
-                this.Visibility = Visibility.Collapsed;
                 UcitajDatotekuResursa();
+                pocetniProzor.sank.Visibility = Visibility.Visible;
+                this.Visibility = Visibility.Collapsed;
+
+
             }
-
-
-            UcitajDatotekuResursa();
-
         }
 
-        private void buttonUpdate_Click(object sender, RoutedEventArgs e)
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
-
-
-            UpdateSankModal update29Modal = new UpdateSankModal(
-               lista[DataGridPeople.SelectedIndex].Id,
-                lista[DataGridPeople.SelectedIndex].Ime,
-                lista[DataGridPeople.SelectedIndex].Prezime,
-                lista[DataGridPeople.SelectedIndex].Jmbg,
-                lista[DataGridPeople.SelectedIndex].Brk);
-
-
-
             UcitajDatotekuResursa();
-            update29Modal.Show();
-
-
+            this.Visibility = Visibility.Collapsed;
             UcitajDatotekuResursa();
+            MainWindow pocetniProzor = Window.GetWindow(this) as MainWindow;
+            if (pocetniProzor != null)
+            {
+                UcitajDatotekuResursa();
+                pocetniProzor.sank.Visibility = Visibility.Visible;
+                this.Visibility = Visibility.Collapsed;
 
-
-
-        }
-
-        private void buttonDelete_Click(object sender, RoutedEventArgs e)
-        {
-
-            lista.RemoveAt(DataGridPeople.SelectedIndex);
-
-            MemorisiDatotekuResursa();
-
-            UcitajDatotekuResursa();
-
-
+            }
         }
     }
 }

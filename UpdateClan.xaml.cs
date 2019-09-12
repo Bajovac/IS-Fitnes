@@ -18,9 +18,9 @@ using System.Windows.Shapes;
 namespace Projekat
 {
     /// <summary>
-    /// Interaction logic for UpdateOsoblje.xaml
+    /// Interaction logic for UpdateClan.xaml
     /// </summary>
-    public partial class UpdateOsoblje : UserControl
+    public partial class UpdateClan : UserControl
     {
 
 
@@ -30,15 +30,15 @@ namespace Projekat
         string jmbg;
         string brk;
 
-        public UpdateOsoblje()
+        public UpdateClan()
         {
             InitializeComponent();
         }
 
-        List<OsobljeData> lista = new List<OsobljeData>();
+        List<ClanData> lista = new List<ClanData>();
 
 
-        public UpdateOsoblje(string id, string ime, string prezime, string jmbg, string brk)
+        public UpdateClan(string id, string ime, string prezime, string jmbg, string brk)
         {
 
             InitializeComponent();
@@ -78,11 +78,11 @@ namespace Projekat
             {
                 // obsCol ima ugradjen konstuktor samo ubacim listu u njega
                 stream = File.Open(_osoblje, FileMode.OpenOrCreate);
-                lista = (List<OsobljeData>)formatter.Deserialize(stream);
+                lista = (List<ClanData>)formatter.Deserialize(stream);
 
                 Console.WriteLine(lista);
 
-                foreach (OsobljeData item in lista)
+                foreach (ClanData item in lista)
                 {
                     Console.WriteLine(item.Id);
                 }
@@ -109,7 +109,7 @@ namespace Projekat
 
 
 
-            foreach (OsobljeData data29 in lista)
+            foreach (ClanData data29 in lista)
             {
                 if (data29.Id == this.id)
                 {

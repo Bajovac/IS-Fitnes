@@ -18,49 +18,21 @@ using System.Windows.Shapes;
 namespace Projekat
 {
     /// <summary>
-    /// Interaction logic for Update29.xaml
+    /// Interaction logic for Add26.xaml
     /// </summary>
-    public partial class UpdateOsobljeModal : Window
+    public partial class AddSup : UserControl
     {
+        List<SupData> lista = new List<SupData>();
 
-
-        private string id;
-        string ime;
-        string prezime;
-        string jmbg;
-        string brk;
-
-        public UpdateOsobljeModal()
+        public AddSup()
         {
             InitializeComponent();
-        }
 
-        List<OsobljeData> lista = new List<OsobljeData>();
-
-
-        public UpdateOsobljeModal(string id, string ime, string prezime, string jmbg, string brk)
-        {
-
-            InitializeComponent();
-
-            this.id = id;
-            this.ime = ime;
-            this.prezime = prezime;
-            this.jmbg = jmbg;
-            this.brk = brk;
-
-            boxID.Text = id;
-            boxIME.Text = ime;
-            boxPREZIME.Text = prezime;
-            boxJMBG.Text = jmbg;
-            boxBRK.Text = brk;
             UcitajDatotekuResursa();
         }
 
-
-
         // SERIJALIZACIJA/DESERIJALIZACIJA IZ DATOTEKE
-        private readonly string _osoblje = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "osoblje.bin");
+        private readonly string _osoblje = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "kuhinja.bin");
 
 
         private void UcitajDatotekuResursa()
@@ -77,13 +49,13 @@ namespace Projekat
             {
                 // obsCol ima ugradjen konstuktor samo ubacim listu u njega
                 stream = File.Open(_osoblje, FileMode.OpenOrCreate);
-                lista = (List<OsobljeData>)formatter.Deserialize(stream);
+                lista = (List<SupData>)formatter.Deserialize(stream);
 
                 Console.WriteLine(lista);
 
-                foreach (OsobljeData item in lista)
+                foreach (SupData item in lista)
                 {
-                    Console.WriteLine(item.Id);
+                    Console.WriteLine(item.Ime);
                 }
 
             }
@@ -106,19 +78,20 @@ namespace Projekat
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = null;
 
+            //Random number = new Random();
 
+            SupData data29 = new SupData();
+            data29.Id = boxID.Text;
+            data29.Ime = boxIME.Text;
+            data29.Prezime = boxPREZIME.Text;
+            data29.Jmbg = boxJMBG.Text;
+            data29.Brk = boxBRK.Text;
 
-            foreach (OsobljeData data29 in lista)
+            lista.Add(data29);
+
+            foreach (SupData person in lista)
             {
-                if (data29.Id == this.id)
-                {
-                    data29.Id = boxID.Text;
-                    data29.Ime = boxIME.Text;
-                    data29.Prezime = boxPREZIME.Text;
-                    data29.Jmbg = boxJMBG.Text;
-                    data29.Brk = boxBRK.Text;
-
-                }
+                Console.WriteLine(person.Id);
             }
 
             try
@@ -148,35 +121,26 @@ namespace Projekat
             if (pocetniProzor != null)
             {
                 UcitajDatotekuResursa();
-                pocetniProzor.osoblje.Visibility = Visibility.Visible;
+                pocetniProzor.kuhinja.Visibility = Visibility.Visible;
                 this.Visibility = Visibility.Collapsed;
-                UcitajDatotekuResursa();
-            }
 
+
+            }
         }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
+            UcitajDatotekuResursa();
             this.Visibility = Visibility.Collapsed;
             UcitajDatotekuResursa();
             MainWindow pocetniProzor = Window.GetWindow(this) as MainWindow;
             if (pocetniProzor != null)
             {
                 UcitajDatotekuResursa();
-                pocetniProzor.osoblje.Visibility = Visibility.Visible;
+                pocetniProzor.kuhinja.Visibility = Visibility.Visible;
                 this.Visibility = Visibility.Collapsed;
-                UcitajDatotekuResursa();
+
             }
         }
-
-        private void WindowMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove(); //omogucava da se prozor pomera tako sto se drzi levi klik na prozoru
-        }
-
-        //private void boxIP_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        //{
-        //    e.Handled = Regex.IsMatch(e.Text, "[^0-9.a-Z- ]+");
-        //}
     }
 }

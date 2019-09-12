@@ -19,7 +19,7 @@ namespace Projekat
     /// <summary>
     /// Interaction logic for Update29.xaml
     /// </summary>
-    public partial class UpdateKuhinjaModal : Window
+    public partial class UpdateZapModal : Window
     {
 
 
@@ -29,15 +29,15 @@ namespace Projekat
         string jmbg;
         string brk;
 
-        public UpdateKuhinjaModal()
+        public UpdateZapModal()
         {
             InitializeComponent();
         }
 
-        List<KuhinjaData> lista = new List<KuhinjaData>();
+        List<ZapData> lista = new List<ZapData>();
 
 
-        public UpdateKuhinjaModal(string id, string ime, string prezime, string jmbg, string brk)
+        public UpdateZapModal(string id, string ime, string prezime, string jmbg, string brk)
         {
 
             InitializeComponent();
@@ -52,14 +52,14 @@ namespace Projekat
             boxIME.Text = ime;
             boxPREZIME.Text = prezime;
             boxJMBG.Text = jmbg;
-            boxBRK.Text = brk;
+            //boxBRK.Text = brk;
             UcitajDatotekuResursa();
         }
 
 
 
         // SERIJALIZACIJA/DESERIJALIZACIJA IZ DATOTEKE
-        private readonly string _osoblje = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "kuhinja.bin");
+        private readonly string _osoblje = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "recepcija.bin");
 
 
         private void UcitajDatotekuResursa()
@@ -76,11 +76,11 @@ namespace Projekat
             {
                 // obsCol ima ugradjen konstuktor samo ubacim listu u njega
                 stream = File.Open(_osoblje, FileMode.OpenOrCreate);
-                lista = (List<KuhinjaData>)formatter.Deserialize(stream);
+                lista = (List<ZapData>)formatter.Deserialize(stream);
 
                 Console.WriteLine(lista);
 
-                foreach (KuhinjaData item in lista)
+                foreach (ZapData item in lista)
                 {
                     Console.WriteLine(item.Id);
                 }
@@ -107,7 +107,7 @@ namespace Projekat
 
 
 
-            foreach (KuhinjaData data29 in lista)
+            foreach (ZapData data29 in lista)
             {
                 if (data29.Id == this.id)
                 {
@@ -115,7 +115,7 @@ namespace Projekat
                     data29.Ime = boxIME.Text;
                     data29.Prezime = boxPREZIME.Text;
                     data29.Jmbg = boxJMBG.Text;
-                    data29.Brk = boxBRK.Text;
+                    //data29.Brk = boxBRK.Text;
 
                 }
             }
@@ -147,7 +147,7 @@ namespace Projekat
             if (pocetniProzor != null)
             {
                 UcitajDatotekuResursa();
-                pocetniProzor.kuhinja.Visibility = Visibility.Visible;
+                pocetniProzor.recepcija.Visibility = Visibility.Visible;
                 this.Visibility = Visibility.Collapsed;
                 UcitajDatotekuResursa();
             }
@@ -162,7 +162,7 @@ namespace Projekat
             if (pocetniProzor != null)
             {
                 UcitajDatotekuResursa();
-                pocetniProzor.kuhinja.Visibility = Visibility.Visible;
+                pocetniProzor.recepcija.Visibility = Visibility.Visible;
                 this.Visibility = Visibility.Collapsed;
                 UcitajDatotekuResursa();
             }

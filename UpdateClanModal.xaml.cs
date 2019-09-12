@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,7 +20,7 @@ namespace Projekat
     /// <summary>
     /// Interaction logic for Update29.xaml
     /// </summary>
-    public partial class UpdateRecepcijaModal : Window
+    public partial class UpdateClanModal : Window
     {
 
 
@@ -29,15 +30,15 @@ namespace Projekat
         string jmbg;
         string brk;
 
-        public UpdateRecepcijaModal()
+        public UpdateClanModal()
         {
             InitializeComponent();
         }
 
-        List<RecepcijaData> lista = new List<RecepcijaData>();
+        List<ClanData> lista = new List<ClanData>();
 
 
-        public UpdateRecepcijaModal(string id, string ime, string prezime, string jmbg, string brk)
+        public UpdateClanModal(string id, string ime, string prezime, string jmbg, string brk)
         {
 
             InitializeComponent();
@@ -59,7 +60,7 @@ namespace Projekat
 
 
         // SERIJALIZACIJA/DESERIJALIZACIJA IZ DATOTEKE
-        private readonly string _osoblje = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "recepcija.bin");
+        private readonly string _osoblje = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "osoblje.bin");
 
 
         private void UcitajDatotekuResursa()
@@ -76,11 +77,11 @@ namespace Projekat
             {
                 // obsCol ima ugradjen konstuktor samo ubacim listu u njega
                 stream = File.Open(_osoblje, FileMode.OpenOrCreate);
-                lista = (List<RecepcijaData>)formatter.Deserialize(stream);
+                lista = (List<ClanData>)formatter.Deserialize(stream);
 
                 Console.WriteLine(lista);
 
-                foreach (RecepcijaData item in lista)
+                foreach (ClanData item in lista)
                 {
                     Console.WriteLine(item.Id);
                 }
@@ -107,7 +108,7 @@ namespace Projekat
 
 
 
-            foreach (RecepcijaData data29 in lista)
+            foreach (ClanData data29 in lista)
             {
                 if (data29.Id == this.id)
                 {
@@ -147,7 +148,7 @@ namespace Projekat
             if (pocetniProzor != null)
             {
                 UcitajDatotekuResursa();
-                pocetniProzor.recepcija.Visibility = Visibility.Visible;
+                pocetniProzor.osoblje.Visibility = Visibility.Visible;
                 this.Visibility = Visibility.Collapsed;
                 UcitajDatotekuResursa();
             }
@@ -162,7 +163,7 @@ namespace Projekat
             if (pocetniProzor != null)
             {
                 UcitajDatotekuResursa();
-                pocetniProzor.recepcija.Visibility = Visibility.Visible;
+                pocetniProzor.osoblje.Visibility = Visibility.Visible;
                 this.Visibility = Visibility.Collapsed;
                 UcitajDatotekuResursa();
             }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Projekat
 {
     [Serializable]
-    public class SankData : INotifyPropertyChanged
+    public class PrizData : INotifyPropertyChanged
     {
         string id;
         string ime;
@@ -27,7 +27,7 @@ namespace Projekat
             }
         }
 
-        public SankData()
+        public PrizData()
         {
             id = "";
             ime = "";
@@ -37,7 +37,7 @@ namespace Projekat
         }
 
 
-        public SankData(string Id, string Ime, string Prezime, string Jmbg, string Brk)
+        public PrizData(string Id, string Ime, string Prezime, string Jmbg, string Brk)
         {
             this.Id = Id;
             this.Ime = Ime;

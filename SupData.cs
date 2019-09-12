@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 namespace Projekat
 {
     [Serializable]
-    public class OsobljeData : INotifyPropertyChanged
+    public class SupData : INotifyPropertyChanged
     {
         string id;
         string ime;
         string prezime;
         string jmbg;
         string brk;
-      
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -27,7 +27,7 @@ namespace Projekat
             }
         }
 
-        public OsobljeData()
+        public SupData()
         {
             id = "";
             ime = "";
@@ -37,7 +37,7 @@ namespace Projekat
         }
 
 
-        public OsobljeData(string Id, string Ime, string Prezime, string Jmbg, string Brk)
+        public SupData(string Id, string Ime, string Prezime, string Jmbg, string Brk)
         {
             this.Id = Id;
             this.Ime = Ime;

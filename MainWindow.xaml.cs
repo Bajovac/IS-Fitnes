@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace Projekat
 
         private void oSoftveru(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Autor: Stefan Vidović\nVerzija: 1.0.1", "O Softveru");
+            MessageBox.Show("Autor: Srđan Bajić\nVerzija: 1.0.0", "O Softveru");
         }
 
         private void uIzradiKlik(object sender, RoutedEventArgs e)
@@ -68,6 +69,11 @@ namespace Projekat
             osoblje.Visibility = Visibility.Collapsed;
             kuhinja.Visibility = Visibility.Collapsed;
             sank.Visibility = Visibility.Collapsed;
+
+        }
+        private void PomocKlik(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://github.com/stefan9977/ISRESTORAN/wiki/Pomoc");
 
         }
         /*
