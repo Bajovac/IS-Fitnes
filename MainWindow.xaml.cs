@@ -73,7 +73,7 @@ namespace Projekat
         }
         private void PomocKlik(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://github.com/stefan9977/ISRESTORAN/wiki/Pomoc");
+            Process.Start("https://github.com/Bajovac/IS-Fitnes/wiki/Help");
 
         }
         /*

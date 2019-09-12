@@ -54,9 +54,9 @@
                 <MenuItem Header="U izradi..." HorizontalAlignment="Left" Height="100" Width="158" Click="uIzradiKlik"/>
             </MenuItem>
             <MenuItem Header="Komercijala" Height="61" Width="112" FontSize="16">
-                <MenuItem Header="Suplementacija" HorizontalAlignment="Left" Height="100" Width="158" Click="osobljeKlik"/>
+                <MenuItem Header="Član" HorizontalAlignment="Left" Height="100" Width="158" Click="osobljeKlik"/>
                 <MenuItem Header="Priznanica" HorizontalAlignment="Left" Height="100" Width="158" Click="sankKlik"/>
-                <MenuItem Header="Član" HorizontalAlignment="Left" Height="100" Width="158" Click="kuhinjaKlik"/>
+                <MenuItem Header="Suplementacija" HorizontalAlignment="Left" Height="100" Width="202" Click="kuhinjaKlik" Margin="0,0,-44,0"/>
                 <MenuItem Header="Zaposleni" HorizontalAlignment="Left" Height="100" Width="158" Click="recepcijaKlik"/>
             </MenuItem>
             <MenuItem Header="Pomoć" Height="61" Width="95" FontSize="16">
